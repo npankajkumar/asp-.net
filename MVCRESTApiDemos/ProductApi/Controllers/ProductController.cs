@@ -21,28 +21,37 @@ namespace ProductApi.Controllers
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Product Get(int id)
         {
-            return "value";
+            return _service.GetProductById(id);
         }
 
         // POST api/<ProductController>
         [HttpPost]
-        public void Post([FromBody] Product value)
+        public IActionResult Post([FromBody] Product value)
         {
-            _service.AddProduct(value);
+           if( _service.AddProduct(value))
+            return CreatedAtAction(nameof(Get), new { id = value.Id }, value);
+
+            return BadRequest();
         }
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Product p)
         {
+           if( _service.UpdateProduct(id, p)) 
+                return Ok(p);
+                return BadRequest();
         }
 
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            if( _service.DeleteProduct(id))
+                return Ok();
+            return BadRequest();    
         }
     }
 }
