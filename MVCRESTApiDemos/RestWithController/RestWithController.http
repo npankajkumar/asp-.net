@@ -1,0 +1,6 @@
+@RestWithController_HostAddress = http://localhost:5070
+
+GET {{RestWithController_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
