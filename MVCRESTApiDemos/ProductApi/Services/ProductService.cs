@@ -2,7 +2,7 @@
 
 namespace ProductApi.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly ProductContext _context = new ProductContext();
         public List<Product> GetAllProducts()
@@ -19,8 +19,10 @@ namespace ProductApi.Services
             {
                 _context.Products.Add(product);
                 _context.SaveChanges();//sql insert operation
+
                 return true;
-            } catch { return false; }
+            }
+            catch { return false; }
         }
         public bool UpdateProduct(int id, Product p)
         {
@@ -34,8 +36,8 @@ namespace ProductApi.Services
                 return true;
             }
             return false;
-            
-         
+
+
         }
         public bool DeleteProduct(int id)
         {
@@ -49,4 +51,4 @@ namespace ProductApi.Services
             return false;
         }
     }
-    }
+}

@@ -1,11 +1,18 @@
-﻿namespace ProductApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProductApi.Models
 {
     public class Product
     {
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Code { get; set; }
+        [Column(TypeName ="varchar(50)")]
         public string Name { get; set; }
         public double Price { get; set; }
         public string Image { get; set; }
-        public int StoreId { get; set; }    
+        public int StoreId { get; set; }   
+      
     }
 }

@@ -1,7 +1,4 @@
-using ProductApi.Models;
-using ProductApi.Services;
-
-namespace ProductApi
+namespace WheelFactoryDbFirst
 {
     public class Program
     {
@@ -10,18 +7,13 @@ namespace ProductApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddSwaggerGen();
+
             builder.Services.AddControllers();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddDbContext<ProductContext>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+
             app.UseAuthorization();
 
 

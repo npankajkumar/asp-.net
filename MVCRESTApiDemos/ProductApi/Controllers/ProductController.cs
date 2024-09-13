@@ -10,9 +10,11 @@ namespace ProductApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-       private readonly ProductService _service = new ProductService();
-
-        // GET: api/<ProductController>
+        private readonly IProductService _service;
+        public ProductController(IProductService service)
+        {
+            _service = service;
+        }// GET: api/<ProductController>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
@@ -31,7 +33,7 @@ namespace ProductApi.Controllers
         public IActionResult Post([FromBody] Product value)
         {
            if( _service.AddProduct(value))
-            return CreatedAtAction(nameof(Get), new { id = value.Id }, value);
+            return CreatedAtAction(nameof(Get), new { id = value.Code }, value);
 
             return BadRequest();
         }

@@ -6,7 +6,7 @@ using RestWithController.Repositories;
 
 namespace RestWithController.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/Godown")]
     [ApiController]
     public class StoresController : ControllerBase
     {
@@ -14,13 +14,13 @@ namespace RestWithController.Controller
         public StoresController(IStoreListRepository repo)
         {
             _repo = repo;
-        }// GET: api/<StoresController>
+        }// GET: api/Store
         [HttpGet]
         public IEnumerable<Store> Get()
         {
             return _repo.GetAllStores();
         }
-        // GET api/<Stores>/5
+        // GET api/Store/location/hyderabad
         
         [HttpGet("location/{location}")]
             public List<Store> Get(string location)
