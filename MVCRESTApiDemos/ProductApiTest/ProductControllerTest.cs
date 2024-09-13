@@ -48,7 +48,7 @@ namespace ProductApiTest
         [Test]
         public void TestPostPositive()
         {
-            Assert.Pass();
+            
         }
         [TearDown]
         public void Clean() { }
