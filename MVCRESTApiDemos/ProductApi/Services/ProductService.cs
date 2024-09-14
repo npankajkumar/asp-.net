@@ -1,4 +1,5 @@
-﻿using ProductApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductApi.Models;
 
 namespace ProductApi.Services
 {
@@ -7,6 +8,7 @@ namespace ProductApi.Services
         private readonly ProductContext _context = new ProductContext();
         public List<Product> GetAllProducts()
         {
+          // _context.Products.FromSqlRaw("select column");
             return _context.Products.ToList();//sql select operation
         }
         public Product GetProductById(int id)
@@ -17,6 +19,7 @@ namespace ProductApi.Services
         {
             try
             {
+               // _context.Database.ExecuteSqlRaw("insert into order valeus()");
                 _context.Products.Add(product);
                 _context.SaveChanges();//sql insert operation
 

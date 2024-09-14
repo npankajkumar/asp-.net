@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWithController", "RestW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApi", "ProductApi\ProductApi.csproj", "{6A3565EF-BDAA-4F0E-81D4-22B37925B349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApiTest", "ProductApiTest\ProductApiTest.csproj", "{ADE3E67C-A21F-404A-B540-C4361A159BE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApiTest", "ProductApiTest\ProductApiTest.csproj", "{ADE3E67C-A21F-404A-B540-C4361A159BE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDbDemo", "MongoDbDemo\MongoDbDemo.csproj", "{0EFC4ED4-5C6B-4DC4-B055-D2C3800A1819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{ADE3E67C-A21F-404A-B540-C4361A159BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE3E67C-A21F-404A-B540-C4361A159BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADE3E67C-A21F-404A-B540-C4361A159BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EFC4ED4-5C6B-4DC4-B055-D2C3800A1819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EFC4ED4-5C6B-4DC4-B055-D2C3800A1819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EFC4ED4-5C6B-4DC4-B055-D2C3800A1819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EFC4ED4-5C6B-4DC4-B055-D2C3800A1819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

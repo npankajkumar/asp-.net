@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using ProductApi.Models;
 using ProductApi.Services;
 
@@ -23,16 +24,22 @@ namespace ProductApi.Controllers
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public ActionResult<Product> Get(int id)
         {
-            return _service.GetProductById(id);
+            var result = _service.GetProductById(id);
+            if (result == null)
+                return NotFound();
+            return Ok(result);
         }
 
         // POST api/<ProductController>
         [HttpPost]
         public IActionResult Post([FromBody] Product value)
         {
-           if( _service.AddProduct(value))
+            if (value == null) {
+                return BadRequest();
+            }
+            if ( _service.AddProduct(value))
             return CreatedAtAction(nameof(Get), new { id = value.Code }, value);
 
             return BadRequest();
