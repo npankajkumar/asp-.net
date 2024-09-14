@@ -14,18 +14,18 @@ namespace MongoDbDemo.Helpers
         {
             string secret = _configuration["Jwt:secret"];
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[] {
                     new Claim("Role", "Admin"),
-                    new Claim("Email",u.email)
-            };
-       
+                    new Claim("Email",u.email),
+                    new Claim("bhumika","ujwala"),
+                   
+            };      
             var token = new JwtSecurityToken(_configuration["Jwt:issuer"],
               _configuration["Jwt:audience"],
              claims,
              expires: DateTime.Now.AddMinutes(120),
              signingCredentials: credentials);
-
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
    

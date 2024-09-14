@@ -57,9 +57,9 @@ namespace MongoDbDemo.Controllers
             {
                 
                 return Ok(new TokenResult() { Status = "success", 
-                    Token =new TokenHelper().GenerateToken(value)});
+                    Token = new TokenHelper().GenerateToken(value)});
             }
-         return NotFound();
+         return NotFound(new TokenResult() { Status="failed",Token=null});
         }
     }
 }

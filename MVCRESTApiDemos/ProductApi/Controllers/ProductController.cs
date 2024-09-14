@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.SqlServer.Server;
 using ProductApi.Models;
 using ProductApi.Services;
 
@@ -10,7 +11,7 @@ namespace ProductApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Admin")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _service;
@@ -21,6 +22,8 @@ namespace ProductApi.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
+            var user = User;
+            Console.WriteLine("data from token" + user.FindAll(p => true).ToArray()[1].Value);//.FindFirst("Email").Value);
             return _service.GetAllProducts();
         }
 
