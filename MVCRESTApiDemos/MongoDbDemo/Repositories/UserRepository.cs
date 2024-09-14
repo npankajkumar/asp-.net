@@ -35,5 +35,12 @@ namespace MongoDbDemo.Repositories
             var result = Users.DeleteOne(u => u.Id == id);
             return result.IsAcknowledged && result.DeletedCount > 0;
         }
+        public bool Validate(User user)
+        {
+            var result = Users.Find(u => u.email == user.email && u.password == user.password);
+            if(result !=null)
+                return result.CountDocuments() > 0;
+            return false;
+        }
     }
     }

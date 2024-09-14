@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDbDemo.Helpers;
 using MongoDbDemo.Models;
 using MongoDbDemo.Repositories;
 
@@ -17,7 +18,6 @@ namespace MongoDbDemo.Controllers
         {
             return _repo.GetUsers();
         }
-
         // GET api/<UserController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -44,6 +44,22 @@ namespace MongoDbDemo.Controllers
         public void Delete(int id)
         {
             _repo.DeleteUser(id);
+        }
+        [HttpPost]
+        [Route("validate")]
+        public IActionResult Validate(User value)
+        {
+            if (value == null)
+            {
+                return BadRequest();
+            }
+            if (_repo.Validate(value))
+            {
+                
+                return Ok(new TokenResult() { Status = "success", 
+                    Token =new TokenHelper().GenerateToken(value)});
+            }
+         return NotFound();
         }
     }
 }

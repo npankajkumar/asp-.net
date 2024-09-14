@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace ProductApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class StoreController : ControllerBase
     {
         private readonly ProductContext _context;
@@ -73,6 +75,7 @@ namespace ProductApi.Controllers
         // POST: api/Store
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        
         public async Task<ActionResult<Store>> PostStore(StoreDTO store)
         {
             Store s = new Store();
