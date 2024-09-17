@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  buyerservice:
+    image: buyerservice
+    build:
+      context: .
+      dockerfile: BuyerService/Dockerfile
+    ports:
+        - 8080:8080
+  sellerservice:
+    image: sellerservice
+    build:
+       context: .
+       dockerfile: SellerService/Dockerfile
+    ports:
+        - 9090:9090 
